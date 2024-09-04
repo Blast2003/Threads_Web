@@ -4,13 +4,13 @@ import { protectRoutes } from '../middlewares/protectRoutes.js';
 
 const userRouter = express.Router();
 
-userRouter.get("/profile/:query", getUserProfile)
 userRouter.post("/signup", UserSignup)
 userRouter.post("/login", UserLogin)
 userRouter.post("/logout", UserLogout)
 userRouter.post("/follow/:id", protectRoutes ,FollowAndUnFollowUser)
 userRouter.put("/update/:id", protectRoutes ,updateUser)
 
+userRouter.get("/profile/:query", getUserProfile)
 userRouter.get ("/suggested", protectRoutes, getSuggestedUsers)
 userRouter.put("/freeze", protectRoutes ,freezeAccount)
 

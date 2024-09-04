@@ -33,7 +33,7 @@ io.on("connection", (socket) =>{
     }
 
     // create events
-    io.emit("getOnlineUsers", Object.keys(userSocketMap)) // key = userId
+    io.emit("getOnlineUsers", Object.keys(userSocketMap)) // key = userId -> online
 
     // handle mark messages when we seen
     socket.on("markMessagesAsSeen", async({conversationId, userId }) =>{
@@ -41,11 +41,11 @@ io.on("connection", (socket) =>{
         try {
             //update seen boolean
             await Message.updateMany( {conversationId: conversationId, seen: false}, {
-                $set:{"lastMessage.seen": true}
+                $set:{seen: true}
             })
 
             await Conversation.updateOne( {_id: conversationId}, {
-                $set:{seen: true}
+                $set:{"lastMessage.seen": true}
             })
 
             // send to the user
@@ -62,7 +62,7 @@ io.on("connection", (socket) =>{
         delete userSocketMap[userId];
         
         // send events
-        io.emit("getOnlineUsers", Object.keys(userSocketMap)) // key = userId
+        io.emit("getOnlineUsers", Object.keys(userSocketMap)) // key = userId -> offline
     })
 })
 
