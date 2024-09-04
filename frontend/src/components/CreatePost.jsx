@@ -41,6 +41,9 @@ const CreatePost = () => {
 	const [loading, setLoading] = useState(false);
 	const [posts, setPosts] = useRecoilState(postsAtom);
 	const { username } = useParams();
+	const checkUser = username === user.username
+
+	console.log("Checkkkkkkkkkk", checkUser)
 
 	const handleTextChange = (e) => {
 		const inputText = e.target.value;
@@ -85,8 +88,8 @@ const CreatePost = () => {
 		}
 	};
 
-	return (
-		<>
+	return checkUser && (
+			<>
 			<Button
 				position={"fixed"}
 				bottom={10}
@@ -148,7 +151,8 @@ const CreatePost = () => {
 				</ModalContent>
 			</Modal>
 		</>
-	);
+	)
+	
 };
 
 export default CreatePost;
