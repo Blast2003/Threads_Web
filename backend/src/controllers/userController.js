@@ -7,8 +7,9 @@ import Post from "../models/postModel.js"
 
 export const UserSignup = async (req, res) =>{
     try {
+        
         const {name, email, username, password} = req.body
-
+        // console.log("name: ", name)
         if(!name || !email || !username || !password){
             return res.status(400).json({
                 error: "Please enter all required fields"
@@ -32,20 +33,25 @@ export const UserSignup = async (req, res) =>{
 
         await newUser.save();
 
-        const token = generateTokenAndSetCookie({
-            _id: newUser._id,
-            username: newUser.username
-        }, res)
-
-        return res.status(201).json({
-            name: user.name,
-            username: user.username,
-            email: user.email,
-            _id: user._id,
-            bio: user.bio,
-            profilePic: user.profilePic,
-            token: token
-        })
+        if(newUser){
+            const token = generateTokenAndSetCookie({
+                _id: newUser._id,
+                username: newUser.username
+            }, res)
+    
+            return res.status(201).json({
+                name: newUser.name,
+                username: newUser.username,
+                email: newUser.email,
+                _id: newUser._id,
+                bio: newUser.bio,
+                profilePic: newUser.profilePic,
+                token: token
+            })
+        } else{
+            res.status(400).json({ error: "Invalid user data" });
+        }
+        
 
 
     } catch (error) {
