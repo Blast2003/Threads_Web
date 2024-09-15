@@ -72,7 +72,7 @@ export default function SignupCard() {
         
         <Box
           rounded={'lg'}
-          bg={useColorModeValue('white', 'gray.dark')}
+          bg={useColorModeValue('#B9A5A5', 'gray.700')}
           boxShadow={'lg'}
           p={8}>
           

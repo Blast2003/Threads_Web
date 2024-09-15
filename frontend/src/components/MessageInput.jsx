@@ -65,7 +65,7 @@ const MessageInput = ( {setMessages} ) => {
 
       // because use messageText in updatedConversations
       setMessageText("")
-      setImgUrl("");
+      setImgUrl("")
 
     } catch (error) {
       showToast("Error", error.message, "error")
