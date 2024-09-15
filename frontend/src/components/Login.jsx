@@ -78,7 +78,7 @@ export default function Login() {
         
         <Box
           rounded={'lg'}
-          bg={useColorModeValue('#B9A5A5', 'gray.700')}
+          bg={useColorModeValue('#B9A5A5', 'gray.dark')}
           boxShadow={'lg'}
           p={8}
           w={{
