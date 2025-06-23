@@ -1,4 +1,4 @@
-import { Avatar, Divider, Flex, Image, Skeleton, SkeletonCircle, Text, useColorModeValue } from "@chakra-ui/react"
+import { Avatar, Center, Divider, Flex, Image, Skeleton, SkeletonCircle, Text, useColorModeValue } from "@chakra-ui/react"
 import MessageInput from "./MessageInput"
 import { useEffect, useRef, useState } from "react"
 import userShowToast from "../hooks/userShowToast"
@@ -8,6 +8,7 @@ import userAtom from "../atoms/userAtom"
 import Message from "./Message"
 import { useSocket } from "../context/SocketContext"
 import messageSound from "../assets/sounds/message.mp3"
+import { MdVideoCall } from "react-icons/md";
 
 const MessageContainer = () => {
     const showToast = userShowToast()
@@ -116,11 +117,21 @@ const MessageContainer = () => {
         
         {/* Message Header */}
 
-        <Flex w={"full"} h={12} alignItems={"center"} gap={2}>
-            <Avatar src={selectedConversation.userProfilePic} size={"sm"}/>
-            <Text display={"flex"} alignItems={"center"}>
-                {selectedConversation.username} <Image src="/verified.png" w={4} h={4} ml={1}/>
-            </Text>
+        <Flex w={"full"} h={12} alignItems={"center"} justifyContent={"space-between"}>
+           
+           {/* Avatar + name + verified image */}
+            <Flex gap={2}>
+                <Avatar src={selectedConversation.userProfilePic} size={"sm"}/>
+                <Text display={"flex"} alignItems={"center"}>
+                    {selectedConversation.username} <Image src="/verified.png" w={4} h={4} ml={1}/>
+                </Text>
+            </Flex>
+
+            {/* Camera icon */}
+            <Flex>
+                <MdVideoCall size={30}/>
+            </Flex> 
+
         </Flex>
 
         <Divider />

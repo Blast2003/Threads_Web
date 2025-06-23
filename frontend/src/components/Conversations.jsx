@@ -29,7 +29,7 @@ const Conversations = ( {conversation, isOnline} ) => {
             mock: conversation.mock,
         }) }
 
-        bg={selectedConversation?._id ===  conversation._id ? (colorMode === "light" ? "gray.600" : "gray.dark") : ""}
+        bg={selectedConversation?._id ===  conversation._id ? (colorMode === "light" ? "gray.600" : "gray.600") : ""}
 
         borderRadius={"md"}
     >

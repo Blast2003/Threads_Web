@@ -11,7 +11,7 @@ export const useSocket = () => {
 
 export const SocketContextProvider = ({ children }) => {
 	const [socket, setSocket] = useState(null);
-	const [onlineUsers, setOnlineUsers] = useState([]);
+	const [onlineUsers, setOnlineUsers] = useState([]); // array of userId
 	const user = useRecoilValue(userAtom);
 
 	useEffect(() => {
